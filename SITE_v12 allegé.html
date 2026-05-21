@@ -1,0 +1,2573 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Les Jardins de Stan — Micropousses & Champignons · Nancy</title>
+  <meta name="description" content="Ferme urbaine à Nancy. Micropousses et champignons gourmets cultivés artisanalement, livrés en circuit ultra-court chez les chefs et particuliers lorrains."/>
+  <meta property="og:title" content="Les Jardins de Stan — Micropousses & Champignons · Nancy"/>
+  <meta property="og:description" content="Micropousses et champignons d'exception cultivés à Nancy. Livraison directe producteur, récolte à la commande."/>
+  <meta property="og:type" content="website"/>
+  <meta name="theme-color" content="#1a3d1a"/>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"LocalBusiness","name":"Les Jardins de Stan","description":"Ferme urbaine spécialisée en micropousses et champignons gourmets à Nancy","address":{"@type":"PostalAddress","addressLocality":"Nancy","addressRegion":"Grand Est","addressCountry":"FR"},"areaServed":"Nancy","priceRange":"€€"}
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --vert-fonce: #1a3d1a;
+      --vert-moyen: #2d6a2d;
+      --vert-clair: #5a9e4e;
+      --vert-tendre: #a8d5a2;
+      --brun: #6b4226;
+      --brun-clair: #c4956a;
+      --creme: #f5f0e8;
+      --creme-fonce: #e8e0d0;
+      --blanc: #fafaf5;
+      --texte: #1a1a14;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--blanc);
+      color: var(--texte);
+      overflow-x: hidden;
+    }
+
+    /* ===== GRAIN OVERLAY ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(245, 240, 232, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(107, 66, 38, 0.12);
+      transition: all 0.3s ease;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--vert-fonce);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--vert-fonce);
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-cta {
+      background: var(--vert-fonce);
+      color: var(--creme) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2px;
+      opacity: 1 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--vert-moyen) !important; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--vert-fonce);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem 5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--vert-tendre);
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--creme);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.4s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--creme);
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(245, 240, 232, 0.7);
+      max-width: 420px;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.6s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.8s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--brun-clair);
+      color: var(--vert-fonce);
+      padding: 0.9rem 2rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--creme);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid rgba(245, 240, 232, 0.3);
+      color: var(--creme);
+      padding: 0.9rem 2rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--creme);
+      background: rgba(245,240,232,0.08);
+    }
+
+    /* Hero right — mosaïque photos */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 3rem 3rem 2rem;
+    }
+
+    .hero-mosaic {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      height: 100%;
+      min-height: 520px;
+      max-height: 680px;
+      opacity: 0;
+      animation: fadeIn 1.2s ease 0.6s forwards;
+    }
+
+    .mosaic-main {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .mosaic-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .mosaic-main:hover img { transform: scale(1.04); }
+
+    .mosaic-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mosaic-small {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .mosaic-logo-cell {
+      background: #f5f0e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .mosaic-logo-cell img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+      padding: 0 !important;
+      transform: scale(1.55);
+      box-sizing: border-box;
+    }
+
+    .mosaic-small img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .mosaic-small:hover img { transform: scale(1.06); }
+
+    .mosaic-label {
+      position: absolute;
+      bottom: 10px;
+      left: 12px;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.85);
+      background: rgba(26,61,26,0.55);
+      backdrop-filter: blur(6px);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    /* Floating circles background */
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(90,158,78,0.12) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    /* ===== BANDE SIGNATURE ===== */
+    .signature-band {
+      background: #2a1f14;
+      padding: 1.2rem 0;
+      overflow: hidden;
+    }
+
+    .marquee {
+      display: flex;
+      gap: 3rem;
+      animation: marquee 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-style: italic;
+      color: var(--creme);
+      letter-spacing: 0.08em;
+      flex-shrink: 0;
+    }
+
+    .marquee .dot {
+      font-style: normal;
+      color: var(--brun-clair);
+      opacity: 0.8;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ===== SECTION : NOTRE HISTOIRE ===== */
+    .section-histoire {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+      background: var(--creme);
+    }
+
+    .histoire-visuel {
+      background: var(--vert-fonce);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .histoire-visuel::before {
+      content: '';
+      position: absolute;
+      inset: 20px;
+      border: 1px solid rgba(168, 213, 162, 0.2);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+
+    .histoire-contenu {
+      padding: 6rem 5rem 6rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brun);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--vert-fonce);
+      margin-bottom: 1.8rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--brun);
+    }
+
+    .section-text {
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: rgba(26, 26, 20, 0.72);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ===== PRODUITS ===== */
+    .section-produits {
+      background: var(--blanc);
+      padding: 7rem 5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .produits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .produit-card {
+      background: var(--creme);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .produit-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(26,61,26,0.12);
+    }
+
+    .produit-visuel {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--vert-fonce);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .produit-body {
+      padding: 1.8rem;
+    }
+
+    .produit-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--brun);
+      margin-bottom: 0.5rem;
+    }
+
+    .produit-nom {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--vert-fonce);
+      margin-bottom: 0.7rem;
+    }
+
+    .produit-desc {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: rgba(26,26,20,0.65);
+    }
+
+    /* ===== VALEURS ===== */
+    .section-valeurs {
+      background: var(--vert-fonce);
+      padding: 7rem 5rem;
+    }
+
+    .valeurs-label { display: none; }
+
+    .valeurs-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .valeurs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .valeur-item {
+      border-top: 1px solid rgba(168,213,162,0.25);
+      padding-top: 1.5rem;
+    }
+
+    .valeur-num { display: none; }
+
+    .valeur-titre {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      color: var(--creme);
+      margin-bottom: 0.8rem;
+    }
+
+    .valeur-texte {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(245,240,232,0.6);
+    }
+
+    /* ===== COMMANDE ===== */
+    .section-commande {
+      background: var(--creme-fonce);
+      padding: 7rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .commande-contenu .section-title {
+      margin-bottom: 1rem;
+    }
+
+    .commande-etapes {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .etape {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+
+    .etape-num {
+      width: 32px; height: 32px;
+      background: var(--vert-fonce);
+      color: var(--creme);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .etape-texte strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--vert-fonce);
+      margin-bottom: 0.2rem;
+    }
+
+    .etape-texte span {
+      font-size: 0.85rem;
+      color: rgba(26,26,20,0.6);
+    }
+
+    /* Form */
+    .commande-form {
+      background: var(--blanc);
+      border-radius: 6px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 40px rgba(26,61,26,0.08);
+    }
+
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--vert-fonce);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--vert-fonce);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(26,61,26,0.15);
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--texte);
+      background: var(--blanc);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--vert-moyen);
+    }
+
+    .form-group textarea { height: 90px; resize: vertical; }
+
+    .btn-form {
+      width: 100%;
+      background: var(--vert-fonce);
+      color: var(--creme);
+      border: none;
+      padding: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      margin-top: 0.5rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-form:hover {
+      background: var(--vert-moyen);
+      transform: translateY(-1px);
+    }
+
+    /* ===== TEMOIGNAGES ===== */
+    .section-temoignages {
+      background: var(--blanc);
+      padding: 6rem 5rem;
+      text-align: center;
+    }
+
+    .temoignages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 3rem auto 0;
+    }
+
+    .temoignage {
+      background: var(--creme);
+      padding: 2rem;
+      border-radius: 4px;
+      text-align: left;
+      border-top: 3px solid var(--vert-clair);
+    }
+
+    .temoignage-texte {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--vert-fonce);
+      margin-bottom: 1.2rem;
+    }
+
+    .temoignage-auteur {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brun);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--vert-fonce);
+      padding: 4rem 5rem 2rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(168,213,162,0.15);
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--creme);
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-brand span { color: var(--brun-clair); font-style: italic; }
+
+    .footer-tagline {
+      font-size: 0.88rem;
+      color: rgba(245,240,232,0.5);
+      line-height: 1.65;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--vert-tendre);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.88rem;
+      color: rgba(245,240,232,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--creme); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(245,240,232,0.35);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-social a {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover { color: var(--creme); }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* ===== CATALOGUE MICROPOUSSES ===== */
+    .section-catalogue {
+      background: var(--vert-fonce);
+      padding: 7rem 5rem;
+    }
+    .section-catalogue .section-label { color: var(--brun-clair); }
+    .section-catalogue .section-title { color: var(--creme); }
+    .section-catalogue .section-title em { color: var(--brun-clair); }
+
+    .cat-filter-bar {
+      display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .cat-filter-btn {
+      padding: 7px 18px; border: 1px solid rgba(200,169,110,0.35);
+      background: transparent; color: rgba(245,240,232,0.5);
+      font-family: 'DM Sans', sans-serif; font-size: 0.72rem;
+      font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+      cursor: pointer; transition: all .2s; border-radius: 2px;
+    }
+    .cat-filter-btn:hover, .cat-filter-btn.active {
+      background: var(--brun-clair); border-color: var(--brun-clair); color: var(--vert-fonce);
+    }
+    .cat-count-bar {
+      text-align: center; padding: 8px 0 2rem; font-size: 0.68rem; letter-spacing: 0.22em;
+      color: rgba(245,240,232,0.3); text-transform: uppercase;
+    }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 14px; max-width: 1200px; margin: 0 auto;
+    }
+    .cat-card {
+      background: #111e11; border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 4px; overflow: hidden; cursor: pointer;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      display: flex; flex-direction: column;
+    }
+    .cat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.55);
+      border-color: rgba(200,169,110,0.35);
+    }
+    .cat-card-photo {
+      width: 100%; height: 190px; object-fit: cover; display: block;
+      filter: brightness(0.92) saturate(1.05); transition: filter .3s;
+    }
+    .cat-card:hover .cat-card-photo { filter: brightness(1) saturate(1.15); }
+    .cat-card-placeholder {
+      width: 100%; height: 190px; display: flex; align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #111e11, #1d341d); font-size: 52px;
+    }
+    .cat-card-badge {
+      background: #1d341d; padding: 6px 14px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(200,169,110,0.12);
+    }
+    .cat-num { font-size: 0.62rem; letter-spacing: 0.22em; color: var(--brun-clair); font-weight: 500; text-transform: uppercase; }
+    .cat-rangee { font-size: 0.62rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.28); text-transform: uppercase; }
+    .cat-card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .cat-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 400; color: var(--creme); line-height: 1.15;
+    }
+    .cat-card-latin {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 0.72rem; color: rgba(245,240,232,0.38);
+    }
+    .cat-divider { width: 24px; height: 1px; background: var(--brun-clair); opacity: 0.5; }
+    .cat-saveur { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vert-clair); font-weight: 500; }
+    .cat-desc { font-size: 0.78rem; line-height: 1.7; color: rgba(245,242,235,0.58); flex: 1; }
+    .cat-card-footer {
+      padding: 8px 16px 10px; border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex; gap: 5px; flex-wrap: wrap;
+    }
+    .cat-tag {
+      font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 3px 8px; border: 1px solid rgba(200,169,110,0.28);
+      color: rgba(232,213,163,0.75); border-radius: 2px;
+    }
+
+    /* Modal */
+    .cat-modal-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+      z-index: 500; display: flex; align-items: center; justify-content: center;
+      padding: 20px; opacity: 0; pointer-events: none;
+      transition: opacity .3s; backdrop-filter: blur(8px);
+    }
+    .cat-modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .cat-modal {
+      background: #111e11; max-width: 800px; width: 100%; max-height: 90vh;
+      overflow-y: auto; position: relative;
+      border: 1px solid rgba(200,169,110,0.2); border-radius: 4px;
+      transform: translateY(20px); transition: transform .3s;
+    }
+    .cat-modal-backdrop.open .cat-modal { transform: translateY(0); }
+    .cat-modal-photo { width: 100%; height: 320px; object-fit: cover; display: block; filter: brightness(0.9); }
+    .cat-modal-placeholder {
+      width: 100%; height: 320px; display: flex; align-items: center;
+      justify-content: center; background: linear-gradient(135deg,#111e11,#1d341d); font-size: 90px;
+    }
+    .cat-modal-body { padding: 30px 36px; }
+    .cat-modal-num { font-size: 0.62rem; letter-spacing: 0.22em; color: var(--brun-clair); font-weight: 500; margin-bottom: 5px; }
+    .cat-modal-title { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; letter-spacing: 0.06em; color: var(--creme); margin-bottom: 4px; }
+    .cat-modal-latin { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: rgba(245,240,232,0.38); margin-bottom: 18px; }
+    .cat-modal-divider { width: 36px; height: 1px; background: var(--brun-clair); margin-bottom: 18px; }
+    .cat-modal-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; line-height: 1.85; color: rgba(245,242,235,0.85); margin-bottom: 22px; }
+    .cat-modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .cat-modal-block { background: rgba(0,0,0,0.2); padding: 14px; border-left: 2px solid rgba(200,169,110,0.3); }
+    .cat-modal-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brun-clair); font-weight: 500; margin-bottom: 4px; }
+    .cat-modal-value { font-size: 0.82rem; line-height: 1.6; color: var(--creme); }
+    .cat-modal-close {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--creme); width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 18px; border-radius: 2px; transition: all .2s;
+    }
+    .cat-modal-close:hover { background: rgba(200,169,110,0.25); border-color: var(--brun-clair); }
+
+    @media (max-width: 900px) {
+      .section-catalogue { padding: 4rem 1.5rem; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .cat-modal-grid { grid-template-columns: 1fr; }
+      .cat-modal-body { padding: 20px 16px; }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    /* ===== HAMBURGER MENU MOBILE ===== */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      z-index: 200;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--vert-fonce);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--creme);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .nav-mobile-overlay.open { display: flex; }
+    .nav-mobile-overlay a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--vert-fonce);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards;
+    }
+    .nav-mobile-overlay a:nth-child(1) { animation-delay: 0.05s; }
+    .nav-mobile-overlay a:nth-child(2) { animation-delay: 0.1s; }
+    .nav-mobile-overlay a:nth-child(3) { animation-delay: 0.15s; }
+    .nav-mobile-overlay a:nth-child(4) { animation-delay: 0.2s; }
+    .nav-mobile-overlay a:nth-child(5) { animation-delay: 0.25s; }
+    .nav-mobile-overlay a.nav-cta-mobile {
+      background: var(--vert-fonce);
+      color: var(--creme);
+      padding: 0.7rem 2.2rem;
+      border-radius: 2px;
+      font-size: 1.1rem;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation-delay: 0.3s;
+    }
+
+    /* ===== BON DE COMMANDE DYNAMIQUE ===== */
+    .bon-commande-section {
+      margin-bottom: 1.2rem;
+    }
+    .bon-commande-section h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--vert-fonce);
+      margin-bottom: 0.7rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid rgba(26,61,26,0.1);
+    }
+    .produit-ligne {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(26,61,26,0.05);
+    }
+    .produit-ligne:last-child { border-bottom: none; }
+    .produit-ligne input[type="checkbox"] {
+      width: 16px; height: 16px;
+      accent-color: var(--vert-fonce);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .produit-ligne label {
+      flex: 1;
+      font-size: 0.88rem;
+      color: var(--texte);
+      cursor: pointer;
+      display: block;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-bottom: 0;
+    }
+    .produit-ligne label strong { color: var(--vert-fonce); }
+    .produit-ligne label small { color: rgba(26,26,20,0.5); font-size: 0.78rem; display: block; }
+    .qte-control {
+      display: none;
+      align-items: center;
+      gap: 4px;
+    }
+    .qte-control.visible { display: flex; }
+    .qte-btn {
+      width: 24px; height: 24px;
+      border: 1px solid rgba(26,61,26,0.2);
+      background: var(--blanc);
+      color: var(--vert-fonce);
+      border-radius: 2px;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .qte-btn:hover { background: var(--creme-fonce); }
+    .qte-val {
+      width: 28px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--vert-fonce);
+    }
+
+    /* Récapitulatif */
+    .recap-box {
+      background: rgba(26,61,26,0.04);
+      border: 1px solid rgba(26,61,26,0.12);
+      border-radius: 4px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .recap-box.visible { display: block; }
+    .recap-box h4 {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--vert-fonce);
+      margin-bottom: 0.6rem;
+    }
+    .recap-ligne {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--texte);
+      padding: 2px 0;
+    }
+    .recap-note {
+      font-size: 0.75rem;
+      color: rgba(26,26,20,0.45);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { padding: 7rem 1.5rem 3rem; }
+      .section-histoire { grid-template-columns: 1fr; }
+      .histoire-visuel { height: 280px; }
+      .histoire-contenu { padding: 3rem 1.5rem; }
+      .section-produits { padding: 4rem 1.5rem; }
+      .produits-grid { grid-template-columns: 1fr; }
+      .section-valeurs { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 2rem; }
+      .valeurs-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .section-commande { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+      .temoignages-grid { grid-template-columns: 1fr; }
+      .section-temoignages { padding: 4rem 1.5rem; }
+      footer { padding: 3rem 1.5rem 1.5rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 480px) {
+      .valeurs-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo" style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--vert-fonce);text-decoration:none;letter-spacing:0.05em;">Les Jardins de Stan</a>
+    <ul class="nav-links">
+      <li><a href="#histoire">Notre histoire</a></li>
+      <li><a href="#produits">Nos produits</a></li>
+      <li><a href="#valeurs">Nos valeurs</a></li>
+      <li><a href="#catalogue">Catalogue</a></li>
+      <li><a href="#graines">Nos graines</a></li>
+      <li><a href="#commande" class="nav-cta">Commander</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" aria-label="Menu" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MENU MOBILE OVERLAY -->
+  <div class="nav-mobile-overlay" id="navMobileOverlay">
+    <a href="#histoire" onclick="closeMobileMenu()">Notre histoire</a>
+    <a href="#produits" onclick="closeMobileMenu()">Nos produits</a>
+    <a href="#valeurs" onclick="closeMobileMenu()">Nos valeurs</a>
+    <a href="#catalogue" onclick="closeMobileMenu()">Catalogue</a>
+    <a href="#graines" onclick="closeMobileMenu()">Nos graines</a>
+    <a href="#commande" class="nav-cta-mobile" onclick="closeMobileMenu()">Commander</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Artisan producteur · Nancy · Depuis 2026</p>
+      <h1 class="hero-title">
+        Micropousses<br/>
+        & Champignons<br/>
+        cultivés ici.
+      </h1>
+      <p class="hero-desc">
+        De notre atelier nancéien directement à votre table.<br/>
+        Micropousses et champignons cultivés avec soin.
+      </p>
+      <div class="hero-actions">
+        <a href="#commande" class="btn-primary">Commander maintenant</a>
+        <a href="#produits" class="btn-outline">Découvrir nos produits</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-mosaic">
+        <!-- Case 1 : Logo -->
+        <div class="mosaic-small mosaic-logo-cell">
+          <img src="https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_01.jpg"
+               alt="Les Jardins de Stan" style="object-fit:contain;background:#f5f0e8;padding:8px;" />
+        </div>
+        <!-- Case 2 : Amarante -->
+        <div class="mosaic-small">
+          <img src="https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_02.jpg"
+               alt="Micropousses d'amarante" style="object-fit:cover;background:#e8ddd0;" />
+          <div class="mosaic-label">Amarante</div>
+        </div>
+        <!-- Case 3 : Capucine -->
+        <div class="mosaic-small">
+          <img src="https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_03.jpg"
+               alt="Micropousses de capucine" style="object-fit:cover;background:#e8ddd0;" />
+          <div class="mosaic-label">Capucine</div>
+        </div>
+                <!-- Case 4 : Champignon -->
+        <div class="mosaic-small">
+          <img src="https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_04.png"
+               alt="Pleurotes frais de l'atelier" style="object-fit:cover;object-position:center 20%;" />
+          <div class="mosaic-label">Pleurotes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDE SIGNATURE -->
+  <div class="signature-band">
+    <div class="marquee">
+      <span>Pleurotes <span class="dot">✦</span></span>
+      <span>Shiitakés <span class="dot">✦</span></span>
+      <span>Micropousses de tournesol <span class="dot">✦</span></span>
+      <span>Micropousses de radis <span class="dot">✦</span></span>
+      <span>Livraison sur Nancy <span class="dot">✦</span></span>
+      <span>Circuit ultra-court <span class="dot">✦</span></span>
+      <span>Sans pesticides <span class="dot">✦</span></span>
+      <span>Artisan producteur <span class="dot">✦</span></span>
+      <span>Pleurotes <span class="dot">✦</span></span>
+      <span>Shiitakés <span class="dot">✦</span></span>
+      <span>Micropousses de tournesol <span class="dot">✦</span></span>
+      <span>Micropousses de radis <span class="dot">✦</span></span>
+      <span>Livraison sur Nancy <span class="dot">✦</span></span>
+      <span>Circuit ultra-court <span class="dot">✦</span></span>
+      <span>Sans pesticides <span class="dot">✦</span></span>
+      <span>Artisan producteur <span class="dot">✦</span></span>
+    </div>
+  </div>
+
+  <!-- HISTOIRE -->
+  <section class="section-histoire" id="histoire">
+    <div class="histoire-visuel">
+      <svg width="320" height="360" viewBox="0 0 320 360" fill="none">
+        <rect x="40" y="40" width="240" height="280" rx="3" stroke="rgba(168,213,162,0.15)" stroke-width="1"/>
+        <circle cx="160" cy="180" r="90" stroke="rgba(168,213,162,0.1)" stroke-width="1" stroke-dasharray="3 5"/>
+        <!-- Grande illustration champignon -->
+        <line x1="160" y1="290" x2="160" y2="200" stroke="#a8d5a2" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+        <path d="M100,200 Q160,140 220,165 Q235,182 224,200 Q196,215 100,200Z" stroke="#a8d5a2" stroke-width="2.5" fill="none" opacity="0.8"/>
+        <path d="M118,201 Q160,186 202,194" stroke="#a8d5a2" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <!-- Petites pousses -->
+        <line x1="100" y1="290" x2="100" y2="255" stroke="#c4956a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+        <circle cx="100" cy="247" r="8" stroke="#c4956a" stroke-width="1.8" fill="none" opacity="0.6"/>
+        <line x1="125" y1="290" x2="125" y2="262" stroke="#c4956a" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+        <circle cx="125" cy="255" r="6" stroke="#c4956a" stroke-width="1.6" fill="none" opacity="0.6"/>
+        <!-- Étoiles -->
+        <circle cx="80" cy="120" r="2" fill="#c4956a" opacity="0.4"/>
+        <circle cx="240" cy="140" r="1.5" fill="#a8d5a2" opacity="0.4"/>
+        <circle cx="220" cy="250" r="2" fill="#a8d5a2" opacity="0.35"/>
+        <!-- Texte -->
+        <text x="160" y="95" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="13" fill="rgba(245,240,232,0.35)" letter-spacing="3">NANCY · 2026</text>
+      </svg>
+    </div>
+    <div class="histoire-contenu reveal">
+      <p class="section-label">Notre histoire</p>
+      <h2 class="section-title">Un jardin <em>au cœur</em><br/>de Nancy</h2>
+      <p class="section-text">
+        Les Jardins de Stan sont nés d'une passion simple : cultiver des produits d'exception
+        et les partager avec les habitants de Nancy et les chefs de la région.
+      </p>
+      <p class="section-text">
+        Pleurotes, shiitakés, micropousses de tournesol, de radis, de pois —
+        chaque variété est cultivée avec soin dans notre atelier nancéien,
+        sans pesticides, sans compromis sur la qualité.
+      </p>
+      <p class="section-text">
+        Cueilli le matin. Livré chez vous dans la journée. <br/>C'est notre engagement.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRODUITS -->
+  <section class="section-produits" id="produits">
+    <div class="section-header reveal">
+      <p class="section-label">Nos produits</p>
+      <h2 class="section-title" style="font-size:2.5rem;">Ce que nous cultivons</h2>
+    </div>
+    <div class="produits-grid">
+
+      <!-- 1. MICROPOUSSES — cœur de l'activité -->
+      <div class="produit-card reveal">
+        <div class="produit-visuel" style="padding:0;overflow:hidden;">
+          <img src="https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_05.png" alt="Micropousses" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        </div>
+        <div class="produit-body">
+          <p class="produit-tag" style="display:flex;flex-direction:column;gap:2px;">
+            <span style="font-size:1.15em;font-weight:700;letter-spacing:0.08em;color:#2d5a27;">MICROPOUSSES</span>
+            <span style="font-size:0.8em;letter-spacing:0.18em;">NOTRE SPÉCIALITÉ</span>
+          </p>
+          <h3 class="produit-nom"><a href="#catalogue" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(168,213,162,0.4);transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(168,213,162,1)'" onmouseout="this.style.borderColor='rgba(168,213,162,0.4)'">Micropousses</a></h3>
+          <p class="produit-desc">
+            Plus de 20 variétés cultivées en atelier : tournesol, radis, pois, brocoli, basilic…
+            Récoltées à la commande, livrées en circuit ultra-court.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2. CHAMPIGNONS -->
+      <div class="produit-card reveal">
+        <div class="produit-visuel">
+          <svg width="200" height="180" viewBox="0 0 200 180" fill="none">
+            <line x1="100" y1="160" x2="100" y2="88" stroke="#a8d5a2" stroke-width="3" stroke-linecap="round"/>
+            <path d="M48,88 Q100,38 154,62 Q168,78 156,92 Q128,106 48,88Z" stroke="#a8d5a2" stroke-width="2.5" fill="rgba(168,213,162,0.08)"/>
+            <path d="M65,90 Q100,76 136,84" stroke="#a8d5a2" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <circle cx="140" cy="50" r="3" fill="#c4956a" opacity="0.4"/>
+            <circle cx="58" cy="70" r="2" fill="#c4956a" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="produit-body">
+          <p class="produit-tag" style="display:flex;flex-direction:column;gap:2px;">
+            <span style="font-size:1.15em;font-weight:700;letter-spacing:0.08em;color:#2d5a27;">CHAMPIGNONS</span>
+            <span style="font-size:0.8em;letter-spacing:0.18em;">ILS SONT BEAUX, ILS SONT FRAIS, ILS SONT BIO</span>
+          </p>
+          <h3 class="produit-nom"><a href="#catalogue-champignons" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(168,213,162,0.4);transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(168,213,162,1)'" onmouseout="this.style.borderColor='rgba(168,213,162,0.4)'">Champignons</a></h3>
+          <p class="produit-desc">
+            Plusieurs variétés cultivées avec soin dans notre atelier nancéien.
+            Fraîcheur garantie, sans pesticides, cueillis le matin même.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CATALOGUE MICROPOUSSES -->
+  <section class="section-catalogue" id="catalogue">
+    <div class="section-header reveal">
+      <p class="section-label">Collection Professionnelle</p>
+      <h2 class="section-title">Catalogue de<br><em>Micro-Pousses</em></h2>
+    </div>
+    <div class="cat-filter-bar">
+      <button class="cat-filter-btn active" onclick="catFilter('tous',this)">Toutes (25)</button>
+      <button class="cat-filter-btn" onclick="catFilter('piquant',this)">🌶 Piquant</button>
+      <button class="cat-filter-btn" onclick="catFilter('doux',this)">🌿 Doux</button>
+      <button class="cat-filter-btn" onclick="catFilter('anise',this)">✨ Anisé</button>
+      <button class="cat-filter-btn" onclick="catFilter('herbace',this)">🍃 Herbacé</button>
+      <button class="cat-filter-btn" onclick="catFilter('acide',this)">🍋 Acidulé</button>
+      <button class="cat-filter-btn" onclick="catFilter('decoratif',this)">🎨 Décoratif</button>
+    </div>
+    <div class="cat-count-bar" id="catCountBar">25 variétés affichées</div>
+    <div class="cat-grid" id="catGrid"></div>
+  </section>
+
+
+  <!-- ANCRE FUTUR CATALOGUE CHAMPIGNONS -->
+  <div id="catalogue-champignons"></div>
+
+  <!-- VALEURS -->
+  <section class="section-valeurs" id="valeurs">
+    <div class="valeurs-header reveal">
+      <p class="section-label" style="color:var(--brun-clair);">Nos engagements</p>
+      <h2 class="section-title" style="color:var(--creme);font-size:2.8rem;">La quête du goût, <em>le respect du vivant.</em></h2>
+    </div>
+    <div class="valeurs-grid">
+      <div class="valeur-item reveal">
+        <p class="valeur-num">01</p>
+        <h3 class="valeur-titre">Circuit ultra-court</h3>
+        <p class="valeur-texte">Zéro intermédiaire. Récolté le matin, livré chez vous dans la journée. La fraîcheur n'attend pas.</p>
+      </div>
+      <div class="valeur-item reveal">
+        <p class="valeur-num">02</p>
+        <h3 class="valeur-titre">Sans pesticides</h3>
+        <p class="valeur-texte">Culture artisanale respectueuse. Pas de traitement chimique, pas de compromis sur votre santé.</p>
+      </div>
+      <div class="valeur-item reveal">
+        <p class="valeur-num">03</p>
+        <h3 class="valeur-titre">Ancré à Nancy</h3>
+        <p class="valeur-texte">Fiers de produire localement. Chaque achat soutient une micro-entreprise nancéienne indépendante.</p>
+      </div>
+      <div class="valeur-item reveal">
+        <p class="valeur-num">04</p>
+        <h3 class="valeur-titre">Sur mesure</h3>
+        <p class="valeur-texte">Particuliers, restaurateurs, épiceries fines — nous adaptons volumes et fréquences à vos besoins.</p>
+      </div>
+      <div class="valeur-item reveal">
+        <p class="valeur-num">05</p>
+        <h3 class="valeur-titre">Fraîcheur garantie</h3>
+        <p class="valeur-texte">Nos micropousses sont récoltées à la demande, jamais en avance. Ce que vous recevez n'a pas passé une nuit en entrepôt.</p>
+      </div>
+      <div class="valeur-item reveal">
+        <p class="valeur-num">06</p>
+        <h3 class="valeur-titre">Zéro gaspillage</h3>
+        <p class="valeur-texte">On cultive à la commande. Pas de surproduction, pas d'invendus. Un modèle sobre et responsable.</p>
+      </div>
+      <div class="valeur-item reveal">
+        <p class="valeur-num">07</p>
+        <h3 class="valeur-titre">Traçabilité totale</h3>
+        <p class="valeur-texte">Vous savez exactement ce que vous mangez : la variété, la date de récolte, les conditions de culture. Transparence absolue.</p>
+      </div>
+      <div class="valeur-item reveal">
+        <p class="valeur-num">08</p>
+        <h3 class="valeur-titre">Relation directe</h3>
+        <p class="valeur-texte">Pas d'intermédiaire, pas de plateforme. Vous échangez directement avec le producteur, par SMS ou WhatsApp.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMANDE -->
+  <section class="section-commande" id="commande">
+    <div class="commande-contenu reveal">
+      <p class="section-label">Commander</p>
+      <h2 class="section-title">C'est <em>simple</em><br/>et rapide</h2>
+      <p class="section-text">
+        Pas de boutique en ligne compliquée. On fait ça à l'ancienne — vous commandez, on livre.
+      </p>
+      <div class="commande-etapes">
+        <div class="etape">
+          <div class="etape-num">1</div>
+          <div class="etape-texte">
+            <strong>Vous choisissez vos produits</strong>
+            <span>Pleurotes, shiitakés, micropousses — ou un assortiment</span>
+          </div>
+        </div>
+        <div class="etape">
+          <div class="etape-num">2</div>
+          <div class="etape-texte">
+            <strong>On vous confirme la disponibilité</strong>
+            <span>Réponse sous quelques heures par SMS ou WhatsApp</span>
+          </div>
+        </div>
+        <div class="etape">
+          <div class="etape-num">3</div>
+          <div class="etape-texte">
+            <strong>Livraison sur Nancy</strong>
+            <span>Cueilli le matin, chez vous dans la journée</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="commande-form reveal" id="bonCommande">
+      <h3 class="form-title">Passer une commande</h3>
+
+      <!-- Identité -->
+      <div class="form-group">
+        <label>Votre nom</label>
+        <input type="text" id="cmdNom" placeholder="Prénom et nom"/>
+      </div>
+      <div class="form-group">
+        <label>Téléphone / WhatsApp</label>
+        <input type="tel" id="cmdTel" placeholder="+33 6 XX XX XX XX"/>
+      </div>
+      <div class="form-group" style="margin-bottom:1.4rem;">
+        <label>Vous êtes</label>
+        <select id="cmdProfil">
+          <option>Particulier</option>
+          <option>Restaurateur / chef</option>
+          <option>Épicerie fine</option>
+          <option>Autre professionnel</option>
+        </select>
+      </div>
+
+      <!-- Sélection produits -->
+      <div class="bon-commande-section">
+        <h4>🍄 Champignons frais</h4>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_pleurotegris" onchange="toggleQte(this,'q_pleurotegris'); updateRecap()"/>
+          <label for="p_pleurotegris"><strong>Pleurotes gris</strong> <small>Pleurotus ostreatus · saveur douce, texture fondante</small></label>
+          <div class="qte-control" id="q_pleurotegris">
+            <button class="qte-btn" onclick="changeQte('qv_pleurotegris',-1)">−</button>
+            <span class="qte-val" id="qv_pleurotegris">1</span>
+            <span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× 250g</span>
+            <button class="qte-btn" onclick="changeQte('qv_pleurotegris',1)">+</button>
+          </div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_pleuroterose" onchange="toggleQte(this,'q_pleuroterose'); updateRecap()"/>
+          <label for="p_pleuroterose"><strong>Pleurotes roses</strong> <small>Pleurotus djamor · couleur remarquable en finition</small></label>
+          <div class="qte-control" id="q_pleuroterose">
+            <button class="qte-btn" onclick="changeQte('qv_pleuroterose',-1)">−</button>
+            <span class="qte-val" id="qv_pleuroterose">1</span>
+            <span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× 250g</span>
+            <button class="qte-btn" onclick="changeQte('qv_pleuroterose',1)">+</button>
+          </div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_pleurotepanicaud" onchange="toggleQte(this,'q_pleurotepanicaud'); updateRecap()"/>
+          <label for="p_pleurotepanicaud"><strong>Pleurote de panicaud</strong> <small>Pleurotus eryngii · charnu, saveur umami profonde</small></label>
+          <div class="qte-control" id="q_pleurotepanicaud">
+            <button class="qte-btn" onclick="changeQte('qv_pleurotepanicaud',-1)">−</button>
+            <span class="qte-val" id="qv_pleurotepanicaud">1</span>
+            <span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× 250g</span>
+            <button class="qte-btn" onclick="changeQte('qv_pleurotepanicaud',1)">+</button>
+          </div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_pleurotejaune" onchange="toggleQte(this,'q_pleurotejaune'); updateRecap()"/>
+          <label for="p_pleurotejaune"><strong>Pleurote jaune</strong> <small>Pleurotus citrinopileatus · délicat, très décoratif</small></label>
+          <div class="qte-control" id="q_pleurotejaune">
+            <button class="qte-btn" onclick="changeQte('qv_pleurotejaune',-1)">−</button>
+            <span class="qte-val" id="qv_pleurotejaune">1</span>
+            <span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× 250g</span>
+            <button class="qte-btn" onclick="changeQte('qv_pleurotejaune',1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bon-commande-section">
+        <h4>🌱 Micropousses</h4>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_radis" onchange="toggleQte(this,'q_radis'); updateRecap()"/>
+          <label for="p_radis"><strong>Radis Rose</strong> <small>Raphanus sativus · piquant frais, belle couleur</small></label>
+          <div class="qte-control" id="q_radis"><button class="qte-btn" onclick="changeQte('qv_radis',-1)">−</button><span class="qte-val" id="qv_radis">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_radis',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_poischiche" onchange="toggleQte(this,'q_poischiche'); updateRecap()"/>
+          <label for="p_poischiche"><strong>Pois Chiche</strong> <small>Cicer arietinum · doux, sucré, végétal</small></label>
+          <div class="qte-control" id="q_poischiche"><button class="qte-btn" onclick="changeQte('qv_poischiche',-1)">−</button><span class="qte-val" id="qv_poischiche">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_poischiche',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_tournesol" onchange="toggleQte(this,'q_tournesol'); updateRecap()"/>
+          <label for="p_tournesol"><strong>Tournesol</strong> <small>Helianthus annuus · noisette, charnu, croquant</small></label>
+          <div class="qte-control" id="q_tournesol"><button class="qte-btn" onclick="changeQte('qv_tournesol',-1)">−</button><span class="qte-val" id="qv_tournesol">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_tournesol',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_tournesoljaune" onchange="toggleQte(this,'q_tournesoljaune'); updateRecap()"/>
+          <label for="p_tournesoljaune"><strong>Tournesol Jaune</strong> <small>Helianthus annuus (étiolé) · doux, noisette, jaune doré</small></label>
+          <div class="qte-control" id="q_tournesoljaune"><button class="qte-btn" onclick="changeQte('qv_tournesoljaune',-1)">−</button><span class="qte-val" id="qv_tournesoljaune">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_tournesoljaune',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_roquette" onchange="toggleQte(this,'q_roquette'); updateRecap()"/>
+          <label for="p_roquette"><strong>Roquette</strong> <small>Eruca vesicaria · amer, poivré</small></label>
+          <div class="qte-control" id="q_roquette"><button class="qte-btn" onclick="changeQte('qv_roquette',-1)">−</button><span class="qte-val" id="qv_roquette">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_roquette',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_moutarde" onchange="toggleQte(this,'q_moutarde'); updateRecap()"/>
+          <label for="p_moutarde"><strong>Moutarde Jaune</strong> <small>Sinapis alba · piquant, relevé</small></label>
+          <div class="qte-control" id="q_moutarde"><button class="qte-btn" onclick="changeQte('qv_moutarde',-1)">−</button><span class="qte-val" id="qv_moutarde">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_moutarde',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_chourouge" onchange="toggleQte(this,'q_chourouge'); updateRecap()"/>
+          <label for="p_chourouge"><strong>Chou Rouge</strong> <small>Brassica oleracea capitata f. rubra · violet intense, doux</small></label>
+          <div class="qte-control" id="q_chourouge"><button class="qte-btn" onclick="changeQte('qv_chourouge',-1)">−</button><span class="qte-val" id="qv_chourouge">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_chourouge',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_mungo" onchange="toggleQte(this,'q_mungo'); updateRecap()"/>
+          <label for="p_mungo"><strong>Haricots Mungo</strong> <small>Vigna radiata · doux, frais, légèrement sucré</small></label>
+          <div class="qte-control" id="q_mungo"><button class="qte-btn" onclick="changeQte('qv_mungo',-1)">−</button><span class="qte-val" id="qv_mungo">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_mungo',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_coriandre" onchange="toggleQte(this,'q_coriandre'); updateRecap()"/>
+          <label for="p_coriandre"><strong>Coriandre</strong> <small>Coriandrum sativum · herbacé, citronné</small></label>
+          <div class="qte-control" id="q_coriandre"><button class="qte-btn" onclick="changeQte('qv_coriandre',-1)">−</button><span class="qte-val" id="qv_coriandre">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_coriandre',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_amarante" onchange="toggleQte(this,'q_amarante'); updateRecap()"/>
+          <label for="p_amarante"><strong>Amarante Rouge</strong> <small>Amaranthus tricolor · pourpre éclatant, doux</small></label>
+          <div class="qte-control" id="q_amarante"><button class="qte-btn" onclick="changeQte('qv_amarante',-1)">−</button><span class="qte-val" id="qv_amarante">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_amarante',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_oseille" onchange="toggleQte(this,'q_oseille'); updateRecap()"/>
+          <label for="p_oseille"><strong>Oseille Veinée</strong> <small>Rumex acetosa · herbacé, légèrement épicé, nervures pourpres</small></label>
+          <div class="qte-control" id="q_oseille"><button class="qte-btn" onclick="changeQte('qv_oseille',-1)">−</button><span class="qte-val" id="qv_oseille">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_oseille',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_brocoli" onchange="toggleQte(this,'q_brocoli'); updateRecap()"/>
+          <label for="p_brocoli"><strong>Brocoli</strong> <small>Brassica oleracea italica · doux, végétal, riche en sulforaphane</small></label>
+          <div class="qte-control" id="q_brocoli"><button class="qte-btn" onclick="changeQte('qv_brocoli',-1)">−</button><span class="qte-val" id="qv_brocoli">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_brocoli',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_basilic" onchange="toggleQte(this,'q_basilic'); updateRecap()"/>
+          <label for="p_basilic"><strong>Basilic Génois</strong> <small>Ocimum basilicum · doux, anisé, sucré</small></label>
+          <div class="qte-control" id="q_basilic"><button class="qte-btn" onclick="changeQte('qv_basilic',-1)">−</button><span class="qte-val" id="qv_basilic">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_basilic',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_betterave" onchange="toggleQte(this,'q_betterave'); updateRecap()"/>
+          <label for="p_betterave"><strong>Betterave Bull's Blood</strong> <small>Beta vulgaris · bordeaux profond, doux, terreux</small></label>
+          <div class="qte-control" id="q_betterave"><button class="qte-btn" onclick="changeQte('qv_betterave',-1)">−</button><span class="qte-val" id="qv_betterave">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_betterave',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_mizuna" onchange="toggleQte(this,'q_mizuna'); updateRecap()"/>
+          <label for="p_mizuna"><strong>Mizuna</strong> <small>Brassica rapa var. nipposinica · doux, légèrement moutardé</small></label>
+          <div class="qte-control" id="q_mizuna"><button class="qte-btn" onclick="changeQte('qv_mizuna',-1)">−</button><span class="qte-val" id="qv_mizuna">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_mizuna',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_trefle" onchange="toggleQte(this,'q_trefle'); updateRecap()"/>
+          <label for="p_trefle"><strong>Trèfle Rouge</strong> <small>Trifolium pratense · frais, herbacé, tiges rosées</small></label>
+          <div class="qte-control" id="q_trefle"><button class="qte-btn" onclick="changeQte('qv_trefle',-1)">−</button><span class="qte-val" id="qv_trefle">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_trefle',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_kale" onchange="toggleQte(this,'q_kale'); updateRecap()"/>
+          <label for="p_kale"><strong>Chou Kale</strong> <small>Brassica oleracea acephala · prononcé, légèrement amer</small></label>
+          <div class="qte-control" id="q_kale"><button class="qte-btn" onclick="changeQte('qv_kale',-1)">−</button><span class="qte-val" id="qv_kale">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_kale',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_luzerne" onchange="toggleQte(this,'q_luzerne'); updateRecap()"/>
+          <label for="p_luzerne"><strong>Luzerne</strong> <small>Medicago sativa · neutre, frais, aérien</small></label>
+          <div class="qte-control" id="q_luzerne"><button class="qte-btn" onclick="changeQte('qv_luzerne',-1)">−</button><span class="qte-val" id="qv_luzerne">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_luzerne',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_shiso" onchange="toggleQte(this,'q_shiso'); updateRecap()"/>
+          <label for="p_shiso"><strong>Shiso Pourpre</strong> <small>Perilla frutescens · menthe, basilic, épicé — incontournable sashimi</small></label>
+          <div class="qte-control" id="q_shiso"><button class="qte-btn" onclick="changeQte('qv_shiso',-1)">−</button><span class="qte-val" id="qv_shiso">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_shiso',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_capucine" onchange="toggleQte(this,'q_capucine'); updateRecap()"/>
+          <label for="p_capucine"><strong>Capucine</strong> <small>Tropaeolum majus · poivré, floral, très gastronomique</small></label>
+          <div class="qte-control" id="q_capucine"><button class="qte-btn" onclick="changeQte('qv_capucine',-1)">−</button><span class="qte-val" id="qv_capucine">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_capucine',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_daikon" onchange="toggleQte(this,'q_daikon'); updateRecap()"/>
+          <label for="p_daikon"><strong>Radis Daikon</strong> <small>Raphanus sativus var. longipinnatus · piquant, rafraîchissant</small></label>
+          <div class="qte-control" id="q_daikon"><button class="qte-btn" onclick="changeQte('qv_daikon',-1)">−</button><span class="qte-val" id="qv_daikon">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_daikon',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_basilicthai" onchange="toggleQte(this,'q_basilicthai'); updateRecap()"/>
+          <label for="p_basilicthai"><strong>Basilic Thaï</strong> <small>Ocimum basilicum var. thyrsiflora · anisé, épicé, intense</small></label>
+          <div class="qte-control" id="q_basilicthai"><button class="qte-btn" onclick="changeQte('qv_basilicthai',-1)">−</button><span class="qte-val" id="qv_basilicthai">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_basilicthai',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_tagete" onchange="toggleQte(this,'q_tagete'); updateRecap()"/>
+          <label for="p_tagete"><strong>Tagète Citron</strong> <small>Tagetes tenuifolia · citronné, épicé, fleurs jaunes comestibles</small></label>
+          <div class="qte-control" id="q_tagete"><button class="qte-btn" onclick="changeQte('qv_tagete',-1)">−</button><span class="qte-val" id="qv_tagete">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_tagete',1)">+</button></div>
+        </div>
+        <div class="produit-ligne">
+          <input type="checkbox" id="p_assortiment" onchange="toggleQte(this,'q_assortiment'); updateRecap()"/>
+          <label for="p_assortiment"><strong>Assortiment du moment</strong> <small>Sélection de saison — laissez-nous choisir pour vous</small></label>
+          <div class="qte-control" id="q_assortiment"><button class="qte-btn" onclick="changeQte('qv_assortiment',-1)">−</button><span class="qte-val" id="qv_assortiment">1</span><span style="font-size:0.72rem;color:rgba(26,26,20,0.45);">× barquette</span><button class="qte-btn" onclick="changeQte('qv_assortiment',1)">+</button></div>
+        </div>
+      </div>
+
+      <!-- Récapitulatif dynamique -->
+      <div class="recap-box" id="recapBox">
+        <h4>📋 Votre sélection</h4>
+        <div id="recapLignes"></div>
+        <p class="recap-note">Tarif définitif communiqué à la confirmation. Prix indicatifs : champignons dès 6€/250g · micropousses dès 4€/barquette.</p>
+      </div>
+
+      <!-- Note complémentaire -->
+      <div class="form-group">
+        <label>Précisions ou questions</label>
+        <textarea id="cmdNote" placeholder="Fréquence souhaitée, contraintes de livraison, variétés particulières..." style="height:70px;"></textarea>
+      </div>
+
+      <button class="btn-form" id="btnEnvoyer" onclick="envoyerCommande()">Envoyer ma demande 🌱</button>
+      <p style="font-size:0.75rem;color:rgba(26,26,20,0.4);text-align:center;margin-top:0.6rem;">Réponse sous 4h · Livraison Nancy & environs</p>
+    </div>
+  </section>
+
+  <!-- Modal catalogue -->
+  <div class="cat-modal-backdrop" id="catModalBackdrop" onclick="catCloseModal(event)">
+    <div class="cat-modal">
+      <button class="cat-modal-close" onclick="catCloseModalDirect()">✕</button>
+      <div id="catModalContent"></div>
+    </div>
+  </div>
+
+  <!-- TEMOIGNAGES -->
+  <section class="section-temoignages">
+    <div class="section-header reveal">
+      <p class="section-label">Ils nous font confiance</p>
+      <h2 class="section-title" style="font-size:2.2rem;">Ce qu'ils en disent</h2>
+    </div>
+    <div class="temoignages-grid">
+      <div class="temoignage reveal">
+        <p class="temoignage-texte">"Des pleurotes d'une fraîcheur incroyable. On les intègre désormais dans notre carte chaque semaine."</p>
+        <p class="temoignage-auteur">— Chef, Restaurant nancéien</p>
+      </div>
+      <div class="temoignage reveal">
+        <p class="temoignage-texte">"Je commande les micropousses chaque semaine. Mes enfants adorent en mettre dans les salades !"</p>
+        <p class="temoignage-auteur">— Particulière, Nancy Centre</p>
+      </div>
+      <div class="temoignage reveal">
+        <p class="temoignage-texte">"Un producteur sérieux, réactif et passionné. Exactement le genre de partenariat qu'on recherche."</p>
+        <p class="temoignage-auteur">— Gérante, Épicerie fine</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <!-- SECTION GRAINES -->
+  <section id="graines" style="background:var(--creme);padding:6rem 2rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label" style="color:var(--brun-clair);">Graines à cultiver</p>
+      <h2 class="section-title" style="color:var(--vert-fonce);">Nos graines pour<br><em>Micropousses</em></h2>
+      <p style="max-width:620px;color:var(--brun);font-size:1.05rem;line-height:1.7;margin-bottom:1rem;">
+        Les mêmes graines que nous utilisons dans notre atelier nancéien. Non traitées, testées et validées par nos soins — nous ne vendons que ce que nous cultivons.
+      </p>
+      <p style="color:var(--brun);font-size:0.92rem;margin-bottom:3rem;opacity:0.8;">
+        Livraison sous 3 jours ouvrés · Paiement sécurisé via Stripe
+      </p>
+
+      <!-- Filtres par catégorie -->
+      <div id="grainesFiltres" style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.5rem;">
+        <button onclick="filtrerGraines('tout')" class="filtre-btn filtre-actif" data-cat="tout">Toutes (22)</button>
+        <button onclick="filtrerGraines('aromates')" class="filtre-btn" data-cat="aromates">Aromates</button>
+        <button onclick="filtrerGraines('legumes')" class="filtre-btn" data-cat="legumes">Légumes</button>
+        <button onclick="filtrerGraines('fleurs')" class="filtre-btn" data-cat="fleurs">Fleurs & Shiso</button>
+      </div>
+
+      <style>
+        .filtre-btn {
+          padding:0.45rem 1.1rem;
+          border:1.5px solid var(--vert-moyen);
+          background:transparent;
+          color:var(--vert-fonce);
+          border-radius:2rem;
+          font-family:'DM Sans',sans-serif;
+          font-size:0.88rem;
+          cursor:pointer;
+          transition:all 0.2s;
+        }
+        .filtre-btn:hover, .filtre-btn.filtre-actif {
+          background:var(--vert-fonce);
+          color:var(--creme);
+          border-color:var(--vert-fonce);
+        }
+        .graines-grid {
+          display:grid;
+          grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+          gap:1.5rem;
+        }
+        .graine-card {
+          background:#fff;
+          border-radius:12px;
+          border:1px solid var(--creme-fonce);
+          padding:1.4rem;
+          transition:transform 0.2s, box-shadow 0.2s;
+          display:flex;
+          flex-direction:column;
+        }
+        .graine-card:hover {
+          transform:translateY(-3px);
+          box-shadow:0 8px 24px rgba(42,31,20,0.1);
+        }
+        .graine-emoji {
+          font-size:2rem;
+          margin-bottom:0.7rem;
+        }
+        .graine-nom {
+          font-family:'Cormorant Garamond',serif;
+          font-size:1.25rem;
+          font-weight:700;
+          color:var(--vert-fonce);
+          margin-bottom:0.2rem;
+        }
+        .graine-latin {
+          font-size:0.8rem;
+          color:var(--brun-clair);
+          font-style:italic;
+          margin-bottom:0.8rem;
+        }
+        .graine-prix {
+          font-size:1rem;
+          font-weight:600;
+          color:var(--brun);
+          margin-bottom:1rem;
+          margin-top:auto;
+        }
+        .graine-prix span {
+          font-size:0.8rem;
+          font-weight:400;
+          color:var(--brun-clair);
+        }
+        .btn-panier {
+          width:100%;
+          padding:0.7rem;
+          background:var(--vert-fonce);
+          color:var(--creme);
+          border:none;
+          border-radius:8px;
+          font-family:'DM Sans',sans-serif;
+          font-size:0.9rem;
+          cursor:pointer;
+          transition:background 0.2s;
+        }
+        .btn-panier:hover { background:var(--vert-moyen); }
+        .graine-card.hidden { display:none; }
+        .snipcart-panier-flottant {
+          position:fixed;
+          bottom:2rem;
+          right:2rem;
+          background:var(--vert-fonce);
+          color:var(--creme);
+          border-radius:50px;
+          padding:0.8rem 1.5rem;
+          font-family:'DM Sans',sans-serif;
+          font-size:0.95rem;
+          cursor:pointer;
+          border:none;
+          box-shadow:0 6px 20px rgba(26,61,26,0.3);
+          z-index:9999;
+          display:none;
+          align-items:center;
+          gap:0.5rem;
+          transition:transform 0.2s;
+        }
+        .snipcart-panier-flottant:hover { transform:scale(1.04); }
+        @media(max-width:640px){
+          .graines-grid { grid-template-columns:1fr 1fr; }
+        }
+        @media(max-width:420px){
+          .graines-grid { grid-template-columns:1fr; }
+        }
+      </style>
+
+      <div class="graines-grid" id="grainesGrid">
+
+        <!-- AROMATES -->
+        <div class="graine-card reveal" data-cat="aromates">
+          <div class="graine-emoji">🌿</div>
+          <div class="graine-nom">Basilic Génois</div>
+          <div class="graine-latin">Ocimum basilicum</div>
+          <div class="graine-prix">4,80 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="basilic-genois"
+            data-item-name="Graines Basilic Génois — Les Jardins de Stan"
+            data-item-price="4.80"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="aromates">
+          <div class="graine-emoji">🌿</div>
+          <div class="graine-nom">Basilic Thaï</div>
+          <div class="graine-latin">Ocimum basilicum var. thyrsiflora</div>
+          <div class="graine-prix">5,50 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="basilic-thai"
+            data-item-name="Graines Basilic Thaï — Les Jardins de Stan"
+            data-item-price="5.50"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="aromates">
+          <div class="graine-emoji">🍋</div>
+          <div class="graine-nom">Basilic Citron</div>
+          <div class="graine-latin">Ocimum americanum</div>
+          <div class="graine-prix">5,20 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="basilic-citron"
+            data-item-name="Graines Basilic Citron — Les Jardins de Stan"
+            data-item-price="5.20"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="aromates">
+          <div class="graine-emoji">🌱</div>
+          <div class="graine-nom">Coriandre</div>
+          <div class="graine-latin">Coriandrum sativum</div>
+          <div class="graine-prix">3,20 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="coriandre"
+            data-item-name="Graines Coriandre — Les Jardins de Stan"
+            data-item-price="3.20"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <!-- LÉGUMES -->
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🌱</div>
+          <div class="graine-nom">Radis Rose</div>
+          <div class="graine-latin">Raphanus sativus</div>
+          <div class="graine-prix">3,90 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="radis-rose"
+            data-item-name="Graines Radis Rose — Les Jardins de Stan"
+            data-item-price="3.90"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🌿</div>
+          <div class="graine-nom">Radis Daikon</div>
+          <div class="graine-latin">Raphanus sativus var. longipinnatus</div>
+          <div class="graine-prix">4,50 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="radis-daikon"
+            data-item-name="Graines Radis Daikon — Les Jardins de Stan"
+            data-item-price="4.50"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">☀️</div>
+          <div class="graine-nom">Tournesol</div>
+          <div class="graine-latin">Helianthus annuus</div>
+          <div class="graine-prix">4,10 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="tournesol"
+            data-item-name="Graines Tournesol — Les Jardins de Stan"
+            data-item-price="4.10"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🌱</div>
+          <div class="graine-nom">Pois Chiche</div>
+          <div class="graine-latin">Cicer arietinum</div>
+          <div class="graine-prix">4,10 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="pois-mangetout"
+            data-item-name="Graines Pois Chiche — Les Jardins de Stan"
+            data-item-price="4.10"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🥗</div>
+          <div class="graine-nom">Roquette</div>
+          <div class="graine-latin">Eruca vesicaria</div>
+          <div class="graine-prix">3,60 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="roquette"
+            data-item-name="Graines Roquette — Les Jardins de Stan"
+            data-item-price="3.60"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🌱</div>
+          <div class="graine-nom">Moutarde Jaune</div>
+          <div class="graine-latin">Sinapis alba</div>
+          <div class="graine-prix">3,90 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="moutarde-jaune"
+            data-item-name="Graines Moutarde Jaune — Les Jardins de Stan"
+            data-item-price="3.90"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🌱</div>
+          <div class="graine-nom">Moutarde de Chine</div>
+          <div class="graine-latin">Brassica juncea</div>
+          <div class="graine-prix">4,20 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="moutarde-chine"
+            data-item-name="Graines Moutarde de Chine — Les Jardins de Stan"
+            data-item-price="4.20"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🥬</div>
+          <div class="graine-nom">Chou Rouge</div>
+          <div class="graine-latin">Brassica oleracea capitata rubra</div>
+          <div class="graine-prix">4,50 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="chou-rouge"
+            data-item-name="Graines Chou Rouge — Les Jardins de Stan"
+            data-item-price="4.50"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🥬</div>
+          <div class="graine-nom">Chou Kale</div>
+          <div class="graine-latin">Brassica oleracea acephala</div>
+          <div class="graine-prix">4,80 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="chou-kale"
+            data-item-name="Graines Chou Kale — Les Jardins de Stan"
+            data-item-price="4.80"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🥦</div>
+          <div class="graine-nom">Brocoli</div>
+          <div class="graine-latin">Brassica oleracea italica</div>
+          <div class="graine-prix">4,60 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="brocoli"
+            data-item-name="Graines Brocoli — Les Jardins de Stan"
+            data-item-price="4.60"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🔴</div>
+          <div class="graine-nom">Betterave Bull's Blood</div>
+          <div class="graine-latin">Beta vulgaris</div>
+          <div class="graine-prix">5,20 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="betterave-bulls-blood"
+            data-item-name="Graines Betterave Bull's Blood — Les Jardins de Stan"
+            data-item-price="5.20"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🌿</div>
+          <div class="graine-nom">Mizuna</div>
+          <div class="graine-latin">Brassica rapa var. nipposinica</div>
+          <div class="graine-prix">4,20 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="mizuna"
+            data-item-name="Graines Mizuna — Les Jardins de Stan"
+            data-item-price="4.20"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🌱</div>
+          <div class="graine-nom">Trèfle Rouge</div>
+          <div class="graine-latin">Trifolium pratense</div>
+          <div class="graine-prix">5,50 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="trefle-rouge"
+            data-item-name="Graines Trèfle Rouge — Les Jardins de Stan"
+            data-item-price="5.50"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="legumes">
+          <div class="graine-emoji">🌿</div>
+          <div class="graine-nom">Luzerne</div>
+          <div class="graine-latin">Medicago sativa</div>
+          <div class="graine-prix">3,50 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="luzerne"
+            data-item-name="Graines Luzerne — Les Jardins de Stan"
+            data-item-price="3.50"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <!-- FLEURS & SHISO -->
+        <div class="graine-card reveal" data-cat="fleurs">
+          <div class="graine-emoji">🧡</div>
+          <div class="graine-nom">Capucine</div>
+          <div class="graine-latin">Tropaeolum majus</div>
+          <div class="graine-prix">6,90 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="capucine"
+            data-item-name="Graines Capucine — Les Jardins de Stan"
+            data-item-price="6.90"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="fleurs">
+          <div class="graine-emoji">🌸</div>
+          <div class="graine-nom">Amarante Rouge</div>
+          <div class="graine-latin">Amaranthus tricolor</div>
+          <div class="graine-prix">5,80 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="amarante-rouge"
+            data-item-name="Graines Amarante Rouge — Les Jardins de Stan"
+            data-item-price="5.80"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="fleurs">
+          <div class="graine-emoji">💛</div>
+          <div class="graine-nom">Tagète Citron</div>
+          <div class="graine-latin">Tagetes tenuifolia</div>
+          <div class="graine-prix">7,90 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="tagete-citron"
+            data-item-name="Graines Tagète Citron — Les Jardins de Stan"
+            data-item-price="7.90"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <div class="graine-card reveal" data-cat="fleurs">
+          <div class="graine-emoji">🟣</div>
+          <div class="graine-nom">Shiso Pourpre</div>
+          <div class="graine-latin">Perilla frutescens var. crispa</div>
+          <div class="graine-prix">6,50 € <span>/ sachet 10g</span></div>
+          <button class="btn-panier snipcart-add-item"
+            data-item-id="shiso-pourpre"
+            data-item-name="Graines Shiso Pourpre — Les Jardins de Stan"
+            data-item-price="6.50"
+            data-item-url="/graines"
+            data-item-description="Sachet de 10g — Graines non traitées, cultivées à Nancy">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+      </div><!-- fin graines-grid -->
+
+      <!-- Note Snipcart -->
+      <p style="text-align:center;margin-top:2.5rem;font-size:0.85rem;color:var(--brun-clair);">
+        ✓ Paiement sécurisé Stripe &nbsp;·&nbsp; ✓ Livraison Colissimo sous 3 jours &nbsp;·&nbsp; ✓ Retours acceptés sous 14 jours
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Bouton panier flottant Snipcart -->
+  <button class="snipcart-panier-flottant snipcart-checkout" id="btnPanier">
+    🛒 Mon panier (<span class="snipcart-items-count">0</span>)
+  </button>
+
+  <!-- Snipcart — remplace YOUR_PUBLIC_API_KEY par ta vraie clé -->
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.3/default/snipcart.css" />
+  <script>
+    window.SnipcartSettings = {
+      publicApiKey: "YOUR_PUBLIC_API_KEY",
+      loadStrategy: "on-user-interaction",
+      modalStyle: "side",
+      currency: "eur",
+      language: "fr",
+    };
+  </script>
+  <script async src="https://cdn.snipcart.com/themes/v3.3.3/default/snipcart.js"></script>
+
+  <script>
+    // Filtre catégories
+    function filtrerGraines(cat) {
+      document.querySelectorAll('.graine-card').forEach(function(card) {
+        if (cat === 'tout' || card.dataset.cat === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+      document.querySelectorAll('.filtre-btn').forEach(function(btn) {
+        btn.classList.toggle('filtre-actif', btn.dataset.cat === cat);
+      });
+    }
+
+    // Afficher bouton panier flottant quand panier non vide
+    document.addEventListener('snipcart.ready', function() {
+      Snipcart.events.on('item.added', function() {
+        document.getElementById('btnPanier').style.display = 'flex';
+      });
+      Snipcart.events.on('cart.reset', function() {
+        document.getElementById('btnPanier').style.display = 'none';
+      });
+    });
+  </script>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand"><img src="https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_06.png" alt="Les Jardins de Stan" style="height:50px;width:auto;filter:brightness(0) saturate(100%) invert(85%) sepia(10%) saturate(300%) hue-rotate(30deg) brightness(110%);"/></div>
+        <p class="footer-tagline">Champignons artisanaux et micropousses cultivés à Nancy, livrés en circuit ultra-court.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#histoire">Notre histoire</a></li>
+          <li><a href="#produits">Nos produits</a></li>
+          <li><a href="#valeurs">Nos valeurs</a></li>
+          <li><a href="#catalogue">Catalogue</a></li>
+          <li><a href="#graines">Nos graines</a></li>
+          <li><a href="#commande">Commander</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Nancy, Lorraine</a></li>
+          <li><a href="#">WhatsApp / SMS</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Les Jardins de Stan · Micro-entreprise · Nancy</p>
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== CATALOGUE MICROPOUSSES =====
+    const catVarieties = [
+      { id:1, rangee:1, name:"Radis Rose", latin:"Raphanus sativus",
+        saveur:"Piquant · Frais", couleur:"Vert / tiges roses",
+        description:"Un classique indémodable. Les pousses de radis rose offrent un piquant vif et rafraîchissant, idéal pour réveiller une assiette. Leur couleur bicolore (vert et rose) en fait un atout décoratif autant que gustatif.",
+        usage:"Sashimi, œuf mollet, salade, tartare", recolte:"5–7 jours",
+        tags:["piquant","decoratif"], emoji:"🌸",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_07.jpg" },
+      { id:2, rangee:1, name:"Pois Chiche", latin:"Cicer arietinum",
+        saveur:"Doux · Sucré · Végétal", couleur:"Vert vif",
+        description:"Pousses généreuses aux feuilles finement dentelées et aux vrilles délicates. Saveur douce et légèrement noisetée, proche de la légumineuse. Texture dense et nutritive, idéale pour les assiettes végétales et les bouillons raffinés.",
+        usage:"Verrines, risotto, salade, carpaccio", recolte:"8–12 jours",
+        tags:["doux","decoratif"], emoji:"🟢",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_08.jpg" },
+      { id:3, rangee:1, name:"Tournesol", latin:"Helianthus annuus",
+        saveur:"Noisette · Charnu", couleur:"Vert profond",
+        description:"Pousses robustes aux cotylédons charnus et croquants. Leur saveur de noisette fraîche est très gourmande. Parfaites dans les salades gastronomiques ou sur un tartare végétal.",
+        usage:"Salade, tartare végétal, sandwich gastronomique", recolte:"10–12 jours",
+        tags:["doux"], emoji:"🌻",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_09.jpg" },
+      { id:3.5, rangee:1, name:"Tournesol Jaune", latin:"Helianthus annuus (étiolé)",
+        saveur:"Doux · Noisette · Délicat", couleur:"Jaune doré lumineux",
+        description:"Version étiolée du tournesol, cultivée à l'abri de la lumière pour développer sa teinte jaune dorée spectaculaire. Même douceur noisettée que son cousin vert, mais avec un impact visuel unique et une texture plus tendre.",
+        usage:"Finition gastronomique, salade, carpaccio, plat végétal", recolte:"10–14 jours",
+        tags:["doux","decoratif"], emoji:"🌟",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_10.jpg" },
+      { id:4, rangee:2, name:"Roquette", latin:"Eruca vesicaria",
+        saveur:"Amer · Poivré", couleur:"Vert foncé",
+        description:"Les mini-feuilles dentelées concentrent une amertume poivrée intense. Excellent contraste avec le fromage, sur une pizza blanche ou en finition d'un risotto crémeux.",
+        usage:"Pizza, carpaccio, fromage, pasta", recolte:"7–10 jours",
+        tags:["piquant"], emoji:"🥬",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_11.jpg" },
+      { id:5, rangee:2, name:"Moutarde Jaune", latin:"Sinapis alba",
+        saveur:"Piquant · Relevé", couleur:"Vert clair / jaune",
+        description:"Micro-pousse au caractère bien trempé. Son piquant vif en fait une alliée des viandes froides, des terrines et des fromages affinés. À doser avec précision.",
+        usage:"Terrine, fromage, viande froide, charcuterie", recolte:"7–9 jours",
+        tags:["piquant"], emoji:"🟡",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_12.jpg" },
+      { id:7, rangee:2, name:"Chou Rouge", latin:"Brassica oleracea capitata f. rubra",
+        saveur:"Doux · Chou", couleur:"Violet intense",
+        description:"D'un violet profond saisissant. Sa saveur douce se marie aux plats nordiques, aux tartares et aux fromages de chèvre. Un élément chromatique spectaculaire.",
+        usage:"Tartare, fromage de chèvre, plats nordiques", recolte:"8–12 jours",
+        tags:["doux","decoratif"], emoji:"🟣",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_13.jpg" },
+      { id:8.5, rangee:2, name:"Haricots Mungo", latin:"Vigna radiata",
+        saveur:"Doux · Frais · Légèrement sucré", couleur:"Vert pâle / tiges blanches",
+        description:"Pousses fines et croquantes aux graines encore apparentes. Leur saveur douce et fraîche avec une légère note sucrée en fait un incontournable des cuisines asiatiques. Texture aérienne et digestibilité remarquable.",
+        usage:"Wok, soupe asiatique, rouleau de printemps, salade thaï", recolte:"4–6 jours",
+        tags:["doux"], emoji:"🌱",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_14.jpg" },
+      { id:9, rangee:3, name:"Coriandre", latin:"Coriandrum sativum",
+        saveur:"Herbacé · Citronné", couleur:"Vert vif",
+        description:"Les pousses offrent un arôme caractéristique intense qui se sublime dans les cuisines asiatiques et moyen-orientales. Parfaites sur des ceviche, des tacos ou des soupes pho.",
+        usage:"Ceviche, tacos, curry, pho, plats asiatiques", recolte:"12–18 jours",
+        tags:["herbace"], emoji:"🌱",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_15.jpg" },
+      { id:11, rangee:3, name:"Amarante Rouge", latin:"Amaranthus tricolor",
+        saveur:"Doux · Neutre", couleur:"Pourpre éclatant",
+        description:"D'un rouge pourpre spectaculaire, sa saveur douce et neutre n'interfère pas avec les compositions mais apporte un impact visuel maximal.",
+        usage:"Finition décorative, salade, carpaccio", recolte:"10–14 jours",
+        tags:["doux","decoratif"], emoji:"💜",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_16.jpg" },
+      { id:21.5, rangee:3, name:"Oseille Veinée", latin:"Rumex acetosa (var. veinée)",
+        saveur:"Herbacé · Légèrement épicé · Frais", couleur:"Vert vif / nervures pourpres",
+        description:"Feuilles d'un vert intense parcourues de nervures pourpres spectaculaires. Saveur herbacée et légèrement épicée, proche du shiso pourpre mais plus fraîche. Un atout décoratif et gustatif exceptionnel pour les assiettes de prestige.",
+        usage:"Sashimi, carpaccio, assiette gastronomique, décoration", recolte:"14–20 jours",
+        tags:["herbace","decoratif","piquant"], emoji:"🌿",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_17.jpg" },
+      { id:6, rangee:4, name:"Brocoli", latin:"Brassica oleracea italica",
+        saveur:"Doux · Végétal", couleur:"Vert profond",
+        description:"Très riches en sulforaphane. Leur goût doux et légèrement crucifère se marie avec les poissons blancs, les œufs et les bouillons clairs.",
+        usage:"Poisson blanc, œuf, bouillon, amuse-bouche", recolte:"7–10 jours",
+        tags:["doux"], emoji:"🥦",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_18.jpg" },
+      { id:8, rangee:4, name:"Basilic Génois", latin:"Ocimum basilicum",
+        saveur:"Doux · Anisé · Sucré", couleur:"Vert tendre",
+        description:"Les jeunes pousses concentrent un arôme intense et sucré. Incontournable sur une burrata, dans un gaspacho ou pour parfumer une huile d'olive infusée.",
+        usage:"Burrata, gaspacho, pasta, huile infusée", recolte:"10–14 jours",
+        tags:["doux","anise","herbace"], emoji:"🌿",
+        img:"https://images.unsplash.com/photo-1618375531912-867984bdfd87?w=600&q=80" },
+      { id:10, rangee:4, name:"Betterave Bull's Blood", latin:"Beta vulgaris",
+        saveur:"Doux · Terreux", couleur:"Bordeaux profond",
+        description:"Les feuilles bordeaux aux nervures cramoisies sont d'une beauté rare. Leur saveur douce et légèrement terreuse rappelle la betterave mûre. Premier plan visuel et gustatif.",
+        usage:"Salade gastronomique, poisson cru, fromage de chèvre", recolte:"12–16 jours",
+        tags:["doux","decoratif"], emoji:"🫚",
+        img:"https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?w=600&q=80" },
+      { id:12, rangee:4, name:"Mizuna", latin:"Brassica rapa var. nipposinica",
+        saveur:"Doux · Légèrement moutardé", couleur:"Vert pâle",
+        description:"Originaire du Japon, ses feuilles finement dentelées ont une texture délicate. Goût doux avec une légère note moutardée, idéal pour les salades de saison et les assiettes zen.",
+        usage:"Salade japonaise, ramen, poisson cru", recolte:"8–12 jours",
+        tags:["doux","piquant"], emoji:"🍃",
+        img:"https://images.unsplash.com/photo-1567375698348-5d9d5ae99de0?w=600&q=80" },
+      { id:13, rangee:4, name:"Trèfle Rouge", latin:"Trifolium pratense",
+        saveur:"Frais · Herbacé", couleur:"Vert / tiges rosées",
+        description:"Les petites feuilles trifoliées aux tiges rosées apportent légèreté et fraîcheur. Saveur délicatement herbacée et texture aérienne pour les salades printanières et tartares.",
+        usage:"Salade, tartare, plats végétaux", recolte:"8–10 jours",
+        tags:["doux","herbace","decoratif"], emoji:"🍀",
+        img:"https://images.unsplash.com/photo-1584589167171-541ce45f1eea?w=600&q=80" },
+      { id:15, rangee:4, name:"Chou Kale", latin:"Brassica oleracea acephala",
+        saveur:"Prononcé · Légèrement amer", couleur:"Vert foncé frisé",
+        description:"Le kale en micro-pousse concentre ses nutriments dans de jeunes feuilles texturées. Sa saveur prononcée complète les bouillons, les jus et les assiettes umami.",
+        usage:"Bouillon, jus vert, plat umami, burger végétal", recolte:"8–12 jours",
+        tags:["doux","herbace"], emoji:"🥬",
+        img:"https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?w=600&q=80" },
+      { id:17, rangee:4, name:"Luzerne", latin:"Medicago sativa",
+        saveur:"Neutre · Frais", couleur:"Vert pâle translucide",
+        description:"Pousses très fines et délicates, presque aériennes. Leur goût neutre et frais permet de texturer une assiette sans perturber les saveurs. Excellent support de garnissage.",
+        usage:"Garnissage, sandwich gourmet, rouleau de printemps", recolte:"5–7 jours",
+        tags:["doux"], emoji:"🌾",
+        img:"https://images.unsplash.com/photo-1604977042946-1eecc30f269e?w=600&q=80" },
+      { id:21, rangee:5, name:"Shiso Pourpre", latin:"Perilla frutescens",
+        saveur:"Menthe · Basilic · Épicé", couleur:"Pourpre profond",
+        description:"Star des cuisines japonaises. Feuilles d'un pourpre profond avec une saveur complexe entre la menthe, le basilic et une note épicée. Incontournable avec les sashimis.",
+        usage:"Sashimi, ceviche, tempura, onigiri", recolte:"14–20 jours",
+        tags:["herbace","decoratif","piquant"], emoji:"💜",
+        img:"https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=600&q=80" },
+      { id:22, rangee:5, name:"Capucine", latin:"Tropaeolum majus",
+        saveur:"Piquant · Poivré", couleur:"Vert / fleurs orange",
+        description:"Unique au catalogue : offre à la fois ses feuilles et ses fleurs orange vif, toutes deux comestibles. Saveur piquante et poivrée. Chef-d'œuvre décoratif pour les assiettes de prestige.",
+        usage:"Assiette de prestige, salade fleurie, carpaccio", recolte:"10–14 jours",
+        tags:["piquant","decoratif"], emoji:"🌸",
+        img:"https://images.unsplash.com/photo-1585129819171-75e9a7baa3a5?w=600&q=80" },
+      { id:23, rangee:5, name:"Radis Daikon", latin:"Raphanus sativus var. longipinnatus",
+        saveur:"Piquant · Rafraîchissant", couleur:"Vert vif lumineux",
+        description:"Le kaiware est omniprésent dans la cuisine japonaise. Ses pousses fines et croquantes apportent un piquant vif et rafraîchissant. Parfait dans les maki, les ramens ou sur une huître.",
+        usage:"Maki, ramen, huître, wok, plats asiatiques", recolte:"7–10 jours",
+        tags:["piquant"], emoji:"🌿",
+        img:"https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80" },
+      { id:31, rangee:5, name:"Basilic Thaï", latin:"Ocimum basilicum var. thyrsiflora",
+        saveur:"Anisé · Épicé · Intense", couleur:"Vert foncé / tiges pourpres",
+        description:"Tiges pourpres caractéristiques, arôme anisé-clou de girofle plus intense que le basilic génois. Fondamental dans les currys, les phở et les woks asiatiques.",
+        usage:"Curry, pho, wok, soupe thaï, plat asiatique", recolte:"12–16 jours",
+        tags:["anise","piquant"], emoji:"💜",
+        img:"https://images.unsplash.com/photo-1560963689-b5682b6440f8?w=600&q=80" },
+      { id:33, rangee:5, name:"Tagète Citron", latin:"Tagetes tenuifolia",
+        saveur:"Citronné · Épicé", couleur:"Jaune vif / fleurs",
+        description:"Fleurs jaune d'or comestibles au parfum citronné et légèrement poivré. Explosion de couleur et de saveur pour les desserts, cocktails et assiettes printanières.",
+        usage:"Dessert, cocktail, salade de fleurs, poisson citronné", recolte:"14–18 jours",
+        tags:["acide","decoratif"], emoji:"🌼",
+        img:"https://images.unsplash.com/photo-1490750967868-88df5691cc98?w=600&q=80" },
+      { id:36, rangee:5, name:"Moutarde de Chine", latin:"Brassica juncea var. rugosa",
+        saveur:"Piquant · Moutardé", couleur:"Vert vif légèrement frisé",
+        description:"Piquant franc et moutardé très utilisé dans la cuisine asiatique. Elle réveille les plats de nouilles, les gyozas, les bao et les bouillons asiatiques.",
+        usage:"Gyoza, bao, nouilles, ramen, dim sum", recolte:"7–10 jours",
+        tags:["piquant"], emoji:"🌿",
+        img:"https://images.unsplash.com/photo-1574226516831-e1dff420e562?w=600&q=80" },
+      { id:38, rangee:5, name:"Basilic Citron", latin:"Ocimum × citriodorum",
+        saveur:"Citronné · Basilic doux", couleur:"Vert clair brillant",
+        description:"Marie délicatement la douceur du basilic et la fraîcheur citronnée. Parfume les poissons avec subtilité, accompagne les fruits exotiques et relève les desserts aux agrumes.",
+        usage:"Poisson, fruits exotiques, dessert aux agrumes, cocktail", recolte:"10–14 jours",
+        tags:["acide","herbace","doux"], emoji:"🍋",
+        img:"https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" },
+      { id:39, rangee:5, name:"Radis Jaune", latin:"Raphanus sativus var. flavescens",
+        saveur:"Doux · Poivré", couleur:"Doré lumineux",
+        description:"Une variété rare et spectaculaire aux tiges d'or éclatant. Saveur douce et poivrée, plus subtile que le radis classique. Ses reflets dorés illuminent instantanément les assiettes de prestige et les compositions gastronomiques.",
+        usage:"Assiette gastronomique, carpaccio, sashimi, tartare", recolte:"8–12 jours",
+        tags:["doux","piquant","decoratif"], emoji:"✨",
+        img:"https://raw.githubusercontent.com/lesjardinsdestan/jardins-stan-images/main/image_19.jpg" },
+    ];
+
+    function catRenderCards(list) {
+      const grid = document.getElementById('catGrid');
+      const bar = document.getElementById('catCountBar');
+      grid.innerHTML = '';
+      bar.textContent = `${list.length} variété${list.length>1?'s':''} affichée${list.length>1?'s':''}`;
+      list.forEach(v => {
+        const card = document.createElement('div');
+        card.className = 'cat-card';
+        card.onclick = () => catOpenModal(v);
+        card.innerHTML = `
+          <img class="cat-card-photo" src="${v.img}" alt="${v.name}"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="cat-card-placeholder" style="display:none">${v.emoji}</div>
+          <div class="cat-card-badge">
+            <span class="cat-num">N° ${String(v.id).padStart(2,'0')}</span>
+            <span class="cat-rangee">Rangée ${v.rangee}</span>
+          </div>
+          <div class="cat-card-body">
+            <div class="cat-card-name">${v.name}</div>
+            <div class="cat-card-latin">${v.latin}</div>
+            <div class="cat-divider"></div>
+            <div class="cat-saveur">${v.saveur}</div>
+            <div class="cat-desc">${v.description}</div>
+          </div>
+          <div class="cat-card-footer">
+            ${v.tags.map(t=>`<span class="cat-tag">${t}</span>`).join('')}
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+
+    function catFilter(tag, btn) {
+      document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      catRenderCards(tag === 'tous' ? catVarieties : catVarieties.filter(v => v.tags.includes(tag)));
+    }
+
+    function catOpenModal(v) {
+      document.getElementById('catModalContent').innerHTML = `
+        <img class="cat-modal-photo" src="${v.img}" alt="${v.name}"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="cat-modal-placeholder" style="display:none">${v.emoji}</div>
+        <div class="cat-modal-body">
+          <div class="cat-modal-num">N° ${String(v.id).padStart(2,'0')} · Rangée ${v.rangee}</div>
+          <div class="cat-modal-title">${v.name}</div>
+          <div class="cat-modal-latin">${v.latin}</div>
+          <div class="cat-modal-divider"></div>
+          <p class="cat-modal-desc">${v.description}</p>
+          <div class="cat-modal-grid">
+            <div class="cat-modal-block"><div class="cat-modal-label">Profil gustatif</div><div class="cat-modal-value">${v.saveur}</div></div>
+            <div class="cat-modal-block"><div class="cat-modal-label">Couleur</div><div class="cat-modal-value">${v.couleur}</div></div>
+            <div class="cat-modal-block"><div class="cat-modal-label">Récolte</div><div class="cat-modal-value">${v.recolte}</div></div>
+            <div class="cat-modal-block"><div class="cat-modal-label">Usages chef</div><div class="cat-modal-value">${v.usage}</div></div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            ${v.tags.map(t=>`<span class="cat-tag">${t}</span>`).join('')}
+          </div>
+        </div>`;
+      document.getElementById('catModalBackdrop').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function catCloseModal(e) {
+      if (e.target === document.getElementById('catModalBackdrop')) catCloseModalDirect();
+    }
+    function catCloseModalDirect() {
+      document.getElementById('catModalBackdrop').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') catCloseModalDirect(); });
+    catRenderCards(catVarieties);
+
+    // ===== MENU MOBILE =====
+    function toggleMobileMenu() {
+      const burger = document.getElementById('navBurger');
+      const overlay = document.getElementById('navMobileOverlay');
+      burger.classList.toggle('open');
+      overlay.classList.toggle('open');
+      document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+    }
+    function closeMobileMenu() {
+      document.getElementById('navBurger').classList.remove('open');
+      document.getElementById('navMobileOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ===== BON DE COMMANDE DYNAMIQUE =====
+    const PRODUITS = {
+      // Champignons
+      p_pleurotegris:    { label: 'Pleurotes gris',           unite: '× 250g' },
+      p_pleuroterose:    { label: 'Pleurotes roses',           unite: '× 250g' },
+      p_pleurotepanicaud:{ label: 'Pleurote de panicaud',      unite: '× 250g' },
+      p_pleurotejaune:   { label: 'Pleurote jaune',            unite: '× 250g' },
+      // Micropousses
+      p_radis:           { label: 'Micropousses Radis Rose',   unite: '× barquette' },
+      p_poischiche:      { label: 'Micropousses Pois Chiche',  unite: '× barquette' },
+      p_tournesol:       { label: 'Micropousses Tournesol',    unite: '× barquette' },
+      p_tournesoljaune:  { label: 'Micropousses Tournesol Jaune', unite: '× barquette' },
+      p_roquette:        { label: 'Micropousses Roquette',     unite: '× barquette' },
+      p_moutarde:        { label: 'Micropousses Moutarde Jaune', unite: '× barquette' },
+      p_chourouge:       { label: 'Micropousses Chou Rouge',   unite: '× barquette' },
+      p_mungo:           { label: 'Micropousses Haricots Mungo', unite: '× barquette' },
+      p_coriandre:       { label: 'Micropousses Coriandre',    unite: '× barquette' },
+      p_amarante:        { label: 'Micropousses Amarante Rouge', unite: '× barquette' },
+      p_oseille:         { label: 'Micropousses Oseille Veinée', unite: '× barquette' },
+      p_brocoli:         { label: 'Micropousses Brocoli',      unite: '× barquette' },
+      p_basilic:         { label: 'Micropousses Basilic Génois', unite: '× barquette' },
+      p_betterave:       { label: 'Micropousses Betterave Bulls Blood', unite: '× barquette' },
+      p_mizuna:          { label: 'Micropousses Mizuna',       unite: '× barquette' },
+      p_trefle:          { label: 'Micropousses Trèfle Rouge', unite: '× barquette' },
+      p_kale:            { label: 'Micropousses Chou Kale',    unite: '× barquette' },
+      p_luzerne:         { label: 'Micropousses Luzerne',      unite: '× barquette' },
+      p_shiso:           { label: 'Micropousses Shiso Pourpre', unite: '× barquette' },
+      p_capucine:        { label: 'Micropousses Capucine',     unite: '× barquette' },
+      p_daikon:          { label: 'Micropousses Radis Daikon', unite: '× barquette' },
+      p_basilicthai:     { label: 'Micropousses Basilic Thaï', unite: '× barquette' },
+      p_tagete:          { label: 'Micropousses Tagète Citron', unite: '× barquette' },
+      p_assortiment:     { label: 'Assortiment du moment',     unite: '× barquette' },
+    };
+
+    function toggleQte(checkbox, qteId) {
+      const ctrl = document.getElementById(qteId);
+      if (checkbox.checked) {
+        ctrl.classList.add('visible');
+      } else {
+        ctrl.classList.remove('visible');
+      }
+    }
+
+    function changeQte(valId, delta) {
+      const el = document.getElementById(valId);
+      let v = parseInt(el.textContent) + delta;
+      if (v < 1) v = 1;
+      el.textContent = v;
+      updateRecap();
+    }
+
+    function updateRecap() {
+      const lignes = [];
+      Object.keys(PRODUITS).forEach(id => {
+        const cb = document.getElementById(id);
+        if (cb && cb.checked) {
+          const qteId = 'qv_' + id.replace('p_','');
+          const qteEl = document.getElementById(qteId);
+          const qte = qteEl ? parseInt(qteEl.textContent) : 1;
+          const p = PRODUITS[id];
+          lignes.push({ label: p.label, qte, unite: p.unite });
+        }
+      });
+
+      const recapBox = document.getElementById('recapBox');
+      const recapLignes = document.getElementById('recapLignes');
+      if (lignes.length === 0) {
+        recapBox.classList.remove('visible');
+        return;
+      }
+      recapBox.classList.add('visible');
+      recapLignes.innerHTML = lignes.map(l =>
+        `<div class="recap-ligne"><span>${l.label}</span><span style="color:var(--vert-moyen);font-weight:500;">${l.qte} ${l.unite}</span></div>`
+      ).join('');
+    }
+
+    function envoyerCommande() {
+      const nom  = document.getElementById('cmdNom').value.trim();
+      const tel  = document.getElementById('cmdTel').value.trim();
+      const profil = document.getElementById('cmdProfil').value;
+      const note = document.getElementById('cmdNote').value.trim();
+
+      if (!nom || !tel) {
+        alert('Merci de renseigner votre nom et votre téléphone pour que nous puissions vous répondre.');
+        return;
+      }
+
+      // Construire le récap commande
+      const selections = [];
+      Object.keys(PRODUITS).forEach(id => {
+        const cb = document.getElementById(id);
+        if (cb && cb.checked) {
+          const qteId = 'qv_' + id.replace('p_','');
+          const qteEl = document.getElementById(qteId);
+          const qte = qteEl ? parseInt(qteEl.textContent) : 1;
+          selections.push(`${qte} ${PRODUITS[id].unite.replace('×','').trim()} de ${PRODUITS[id].label}`);
+        }
+      });
+
+      if (selections.length === 0) {
+        alert('Veuillez sélectionner au moins un produit dans votre commande.');
+        return;
+      }
+
+      // Composer le message
+      const recap = selections.join(', ');
+      const message = encodeURIComponent(
+        `Bonjour, je suis ${nom} (${profil}). Je souhaite commander : ${recap}.${note ? ' Notes : ' + note : ''} Merci !`
+      );
+
+      const btn = document.getElementById('btnEnvoyer');
+      btn.textContent = '✓ Commande préparée !';
+      btn.style.background = '#2d6a2d';
+
+      // Lancer WhatsApp avec le récap pré-rempli (remplacer par votre numéro)
+      setTimeout(() => {
+        window.open(`https://wa.me/33600000000?text=${message}`, '_blank');
+        btn.textContent = 'Envoyer ma demande 🌱';
+        btn.style.background = '';
+      }, 700);
+    }
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      nav.style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(26,61,26,0.10)' : 'none';
+    });
+  </script>
+
+</body>
+</html>
